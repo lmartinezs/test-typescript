@@ -19,6 +19,8 @@ jobs:
         ls -ls
         npm install multiple-cucumber-html-reporter
         node src/cucumber-report.js
+        ls -ls
+        ls -ls report
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
