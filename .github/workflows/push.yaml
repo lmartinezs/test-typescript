@@ -14,14 +14,9 @@ jobs:
         node-version: 16
         cache: 'npm'
     - name: Install dependencies
-      run: |
-          #if [ -e yarn.lock ]; then
-          #yarn install --frozen-lockfile
-          #elif [ -e package-lock.json ]; then
-          #npm ci
-          #else
-          npm i
-          #fi
+      run: |      
+          npm i -g pnpm
+          pnpm i
     - run: |
         npm test
         ls -ls
