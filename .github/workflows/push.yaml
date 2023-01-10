@@ -15,8 +15,7 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: |      
-          npm i -g pnpm
-          pnpm i
+          npm ci
     - run: |
         npm test
         ls -ls
