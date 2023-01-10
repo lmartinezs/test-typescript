@@ -14,4 +14,4 @@ jobs:
         node-version: 16
         cache: 'npm'
     - run: npm ci
-    - run: npm test --format html:cucumber-report.html
+    - run: npm test
