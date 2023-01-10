@@ -4,7 +4,7 @@
   "description": "A simple example of a TypeScript Cucumber-JS project",
   "main": "src/index.ts",
   "scripts": {
-    "test": "cucumber-js --format json:report/report.json; node report.js; type report/report.json"
+    "test": "cucumber-js --format json:report.json; node report.js; type report.json"
   },
   "repository": {
     "type": "git",
