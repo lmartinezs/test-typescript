@@ -21,6 +21,7 @@ jobs:
       run: |        
         npm install cucumber-html-reporter --save-dev
         npm test
+        npm report
     - name: list files
       run: |        
         ls -ls        
