@@ -17,6 +17,9 @@ jobs:
       run: |      
           npm ci
     - run: |
+        npm i
+        chmod -R a+x node_modules
+        npm install cucumber-html-reporter --save-dev
         npm test
         ls -ls
         ls -ls report
