@@ -15,9 +15,6 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: |      
-          npm ci
-    - name: run dependencies
-      run: |      
           npm i
           chmod -R a+x node_modules
     - name: reporter
