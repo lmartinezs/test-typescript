@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "cucumber-js --format json:report.json",
-    "report": "node report.js; type report.json"
+    "test:report": "node report.js; type report.json"
   },
   "repository": {
     "type": "git",
