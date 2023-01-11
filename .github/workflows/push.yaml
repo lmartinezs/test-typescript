@@ -27,7 +27,10 @@ jobs:
         npm run test:reportm        
     - name: generate table
       run: |        
-        echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
+        echo "{ | Command | Description |
+                | --- | --- |
+                | git status | List all new or modified files |
+                | git diff | Show file differences that haven't been staged |}" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       with:
         name: reports
