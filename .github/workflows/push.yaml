@@ -19,13 +19,15 @@ jobs:
           chmod -R a+x node_modules
     - name: reporter
       run: |        
-        npm install cucumber-html-reporter --save-dev
+        #npm install cucumber-html-reporter --save-dev
+        npm install multiple-cucumber-html-reporter --save-dev
         npm test
-        npm run test:report
+        #npm run test:report
+        npm run test:reportm
     - name: list files
       run: |        
         ls -ls        
     - uses: actions/upload-artifact@v3
       with:
         name: reports
-        path: cucumber-html-report.html
+        path: cucumber-html-report-m.html
