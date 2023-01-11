@@ -29,7 +29,7 @@ jobs:
     - uses: deblockt/cucumber-report-annotations-action@v1.7
       if: ${{ always() }}
       with:
-        access-token: ${{ secrets.GITHUB_TOKEN }}
+        access-token: ${{ secrets.GH_TOKEN }}
         path: "reports/report.json"
     - name: generate table
       run: |    
