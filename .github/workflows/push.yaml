@@ -22,15 +22,15 @@ jobs:
       run: |        
         #npm install cucumber-html-reporter --save-dev
         npm install multiple-cucumber-html-reporter --save-dev
-        npm test
+        npm test | tee 
         #npm run test:report
         npm run test:reportm        
     - name: generate table
       run: |        
-        echo "{ | Command | Description |
-                | --- | --- |
-                | git status | List all new or modified files |
-                | git diff | Show file differences that haven't been staged |}" >> $GITHUB_STEP_SUMMARY
+        echo "| Command | Description |
+              | --- | --- |
+              | git status | List all new or modified files |
+              | git diff | Show file differences that haven't been staged |" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       with:
         name: reports
