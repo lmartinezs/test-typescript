@@ -26,6 +26,10 @@ jobs:
         #npm run test:report
         npm run test:reportm
         cp reports/report.json reports/html/.
+    - uses: deblockt/cucumber-report-annotations-action@v1.7
+      with:
+        access-token: ${{ secrets.GITHUB_TOKEN }}
+        path: "reports/report.json"
     - name: generate table
       run: |    
         SUMMARY=$(cat << EOF
