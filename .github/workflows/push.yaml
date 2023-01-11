@@ -17,6 +17,7 @@ jobs:
       run: |      
           npm i
           chmod -R a+x node_modules
+          mkdir reports
     - name: reporter
       run: |        
         #npm install cucumber-html-reporter --save-dev
