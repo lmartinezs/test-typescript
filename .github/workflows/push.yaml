@@ -26,11 +26,14 @@ jobs:
         #npm run test:report
         npm run test:reportm        
     - name: generate table
-      run: |        
-        SUMMARY=$'| Command | Description |
-                  | --- | --- |
-                  | git status | List all new or modified files |
-                  | git diff | Show file differences that haven't been staged |'
+      run: |    
+        SUMMARY=$(cat << EOF
+          | Command | Description |
+          | --- | --- |
+          | git status | List all new or modified files |
+          | git diff | Show file differences that haven't been staged |
+          EOF
+          )
         echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       with:
