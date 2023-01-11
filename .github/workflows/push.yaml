@@ -24,10 +24,10 @@ jobs:
         npm install multiple-cucumber-html-reporter --save-dev
         npm test
         #npm run test:report
-        npm run test:reportm
-    - name: list files
+        npm run test:reportm        
+    - name: generate table
       run: |        
-        ls -ls        
+        echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       with:
         name: reports
