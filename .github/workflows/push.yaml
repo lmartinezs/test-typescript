@@ -27,5 +27,5 @@ jobs:
         ls -ls        
     - uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
-        path: cucumber-report.json
+        name: reports
+        path: cucumber-html-report.html
