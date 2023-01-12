@@ -19,7 +19,6 @@ jobs:
           chmod -R a+x node_modules
           mkdir reports
     - name: reporter
-      continue-on-error: true
       run: |        
         #npm install cucumber-html-reporter --save-dev
         npm install multiple-cucumber-html-reporter --save-dev
