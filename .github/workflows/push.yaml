@@ -34,8 +34,9 @@ jobs:
     - name: generate table1
       if: ${{ always() }}
       run: |   
-        SUMMARY=$(<createtable.sh)
-        echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+        sh createtable.sh
+        #SUMMARY=$(<createtable.sh)
+        #echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
     - name: generate table
       if: ${{ always() }}
       run: |    
