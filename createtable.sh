@@ -10,7 +10,7 @@ for file in $(ls reports/*.json); do
     steps_length=$(jq -r '.[] | .elements[].steps[].name' $file | wc -l)
     
     header="| step | keyword | status | location |\n| ------ | ------ | ------ | ------ |\n";
-    scenario="##### **Scenario** $name \n total: $total_steps | "
+    scenario="##### **Scenario** $name \n total: $total_steps | \n"
     steps=""
         for i in $(seq 0 $(($steps_length-1)))
         do   
