@@ -37,24 +37,6 @@ jobs:
         sh createtable.sh
         #SUMMARY=$(<createtable.sh)
         #echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
-    - name: generate table
-      if: ${{ always() }}
-      run: |    
-        SUMMARY=$(cat << EOF
-        ##### **Scenario** Greeting 
-        Total: 4 | passed: 2 | failed: 5
-        | step | keyword | status | location |
-        | ------ | ------ | ------ | ------ |
-        | the greeter says hello | When | :heavy_check_mark: passed | features/step_definitions/steps.ts:10 |
-        | I should have heard "hell" | Then | :negative_squared_cross_mark: failed | features/step_definitions/steps.ts:14 |
-        ##### **Scenario** Saludar 
-        | step | keyword | status | location |
-        | ------ | ------ | ------ | ------ |
-        | the greeter says hello | When | :heavy_check_mark: passed | features/step_definitions/steps.ts:10 |
-        | I should have heard "hell" | Then | :heavy_check_mark: passed | features/step_definitions/steps.ts:14 |
-        EOF
-        )
-        echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
