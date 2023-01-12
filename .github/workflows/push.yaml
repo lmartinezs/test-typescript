@@ -32,6 +32,7 @@ jobs:
         access-token: ${{ secrets.GH_TOKEN }}
         path: "reports/report.json"
     - name: generate table
+      if: ${{ always() }}
       run: |    
         SUMMARY=$(cat << EOF
         ##### **Scenario** Greeting 
