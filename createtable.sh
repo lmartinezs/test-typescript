@@ -35,4 +35,5 @@ for file in $(ls reports/*.json); do
 done
 
 SUMMARY=$report
+echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
 #echo $report
