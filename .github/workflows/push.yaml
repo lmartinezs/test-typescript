@@ -23,15 +23,15 @@ jobs:
       run: |        
         #npm install cucumber-html-reporter --save-dev
         npm install multiple-cucumber-html-reporter --save-dev
-        npm test
+        npm test        
         #npm run test:report
-        npm run test:reportm
+        #npm run test:reportm
         cp reports/report.json reports/html/.
-    - uses: deblockt/cucumber-report-annotations-action@v1.7
+    - name: "read report"
       if: ${{ always() }}
-      with:
-        access-token: ${{ secrets.GH_TOKEN }}
-        path: "reports/report.json"
+      run: |
+        more reports/report.json
+        npm run test:reportm        
     - name: generate table
       if: ${{ always() }}
       run: |    
