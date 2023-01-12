@@ -32,6 +32,7 @@ jobs:
         more reports/report.json
         npm run test:reportm        
     - name: generate table1
+      if: ${{ always() }}
       run: |   
         SUMMARY=$(cat <<'EOF' >> creatable.sh)
         echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
