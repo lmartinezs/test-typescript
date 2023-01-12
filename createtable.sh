@@ -34,5 +34,5 @@ for file in $(ls reports/*.json); do
     report="${report}${scenario}${header}"
 done
 
-
-echo $report
+SUMMARY=$report
+#echo $report
