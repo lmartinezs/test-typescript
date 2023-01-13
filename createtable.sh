@@ -1,16 +1,14 @@
 #!/bin/bash
-
-
-report=""
+report="##### Scenarios:"
 for file in $(ls reports/*.json); do 
     name=$(jq -r '.[] | .name' $file)
     total_steps=$(jq '.[] | .elements[].steps[].result.status' $file | wc -l)
     failed_steps=$(jq '.[] | .elements[].steps[].result.status' $file | grep "failed" | wc -l)
     passed_steps=$(jq '.[] | .elements[].steps[].result.status' $file | grep "passed" | wc -l)
     steps_length=$(jq -r '.[] | .elements[].steps[].name' $file | wc -l)
-    
+    iconStatus=$(if [ $failed_steps > 0 ]; then echo ":negative_squared_cross_mark:"; else echo ":heavy_check_mark:"; fi)
     header="| step | keyword | status | location |\n| ------ | ------ | ------ | ------ |\n";
-    scenario="##### **Scenario** $name \n total: $total_steps | \n"
+    scenario="<details> <summary>$iconStatus $name | Total: $total_steps | Passed: $passed_steps | Failed: $failed_steps |</summary> \n\n"
     steps=""
         for i in $(seq 0 $(($steps_length-1)))
         do   
@@ -22,7 +20,7 @@ for file in $(ls reports/*.json); do
             iconStatus=":negative_squared_cross_mark:"
         fi
         location=$(jq -r ".[] | .elements[].steps[$i].match.location" $file)                        
-        header="${header}| $stepName | $keyword | $iconStatus $status | $location |\n";
+        header="${header}| $stepName | $keyword | $iconStatus $status | $location |\n</details>";
         done
     
     #jq -r '.[] | .elements[].steps[].name' report.json
