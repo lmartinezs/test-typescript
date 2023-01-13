@@ -1,5 +1,5 @@
 #!/bin/bash
-report="##### Scenarios:"
+report="##### Scenarios:\n"
 for file in $(ls reports/*.json); do 
     name=$(jq -r '.[] | .name' $file)
     total_steps=$(jq '.[] | .elements[].steps[].result.status' $file | wc -l)
@@ -8,7 +8,7 @@ for file in $(ls reports/*.json); do
     steps_length=$(jq -r '.[] | .elements[].steps[].name' $file | wc -l)
     iconStatus=$(if [ $failed_steps > 0 ]; then echo ":negative_squared_cross_mark:"; else echo ":heavy_check_mark:"; fi)
     header="| step | keyword | status | location |\n| ------ | ------ | ------ | ------ |\n";
-    scenario="<details> <summary>$iconStatus $name | Total: $total_steps | Passed: $passed_steps | Failed: $failed_steps |</summary> \n\n"
+    scenario="<details> <summary>$iconStatus $name | Total: $total_steps | Passed: $passed_steps | Failed: $failed_steps | </summary> \n\n"
     steps=""
         for i in $(seq 0 $(($steps_length-1)))
         do   
