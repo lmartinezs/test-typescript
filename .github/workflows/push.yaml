@@ -26,7 +26,7 @@ jobs:
         npm test        
         #npm run test:report
         #npm run test:reportm
-        cp reports/report.json reports/html/.
+        cp -r reports/*.json reports/html/.
     - name: "read report"
       if: ${{ always() }}
       run: |
