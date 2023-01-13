@@ -18,7 +18,7 @@ jobs:
           npm i
           chmod -R a+x node_modules
           mkdir reports
-          npx playwright install --with-deps
+          npx playwright install --with-deps chrome
     - name: reporter
       run: |        
         #npm install cucumber-html-reporter --save-dev
