@@ -36,7 +36,8 @@ jobs:
       if: ${{ always() }}
       run: |           
         #sh createtable.sh        
-          report="##### Scenarios:\n"
+        
+        temp=$(report="##### Scenarios:\n"
           for file in $(ls reports/*.json); do 
               name=$(jq -r '.[] | .name' $file)
               total_steps=$(jq '.[] | .elements[].steps[].result.status' $file | wc -l)
@@ -55,9 +56,10 @@ jobs:
                       location=$(jq -r ".[] | .elements[].steps[$i].match.location" $file)                        
                       header="${header}| $stepName | $keyword | $iconStepStatus $status | $location |\n";
                   done
-              report="${report}${scenario}${header} </details>\n"
-          done
-          SUMMARY=$report
+              report="${report}${scenario}${header} </details>\n"              
+          done 
+          echo $report)
+          SUMMARY=$temp
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
     - uses: actions/upload-artifact@v3
       if: ${{ always() }}
