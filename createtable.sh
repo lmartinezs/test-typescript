@@ -20,7 +20,7 @@ for file in $(ls reports/*.json); do
             iconStatus=":negative_squared_cross_mark:"
         fi
         location=$(jq -r ".[] | .elements[].steps[$i].match.location" $file)                        
-        header="${header}| $stepName | $keyword | $iconStatus $status | $location |\n</details>";
+        header="${header}| $stepName | $keyword | $iconStatus $status | $location |\n";
         done
     
     #jq -r '.[] | .elements[].steps[].name' report.json
@@ -29,7 +29,7 @@ for file in $(ls reports/*.json); do
     #echo "total_steps: $total_steps";
     #echo "failed_steps: $failed_steps";
     #echo "passed_steps: $passed_steps";
-    report="${report}${scenario}${header}"
+    report="${report}${scenario}${header} </details>"
 done
 echo $report
 SUMMARY=$report
