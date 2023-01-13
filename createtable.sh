@@ -13,12 +13,8 @@ for file in $(ls reports/*.json); do
         for i in $(seq 0 $(($steps_length-1))); do
             stepName=$(jq -r ".[] | .elements[].steps[$i].name" $file)
             keyword=$(jq -r ".[] | .elements[].steps[$i].keyword" $file)
-            status=$(jq -r ".[] | .elements[].steps[$i].result.status" $file)
-            #iconStepStatus=":heavy_check_mark:"
-            iconStepStatus=$(if [ "$status" = "failed" ]; then echo ":negative_squared_cross_mark:"; else echo ":heavy_check_mark:"; fi)
-            #if [ "$status" = "failed" ]; then
-            #    iconStepStatus=":negative_squared_cross_mark:"
-            #fi
+            status=$(jq -r ".[] | .elements[].steps[$i].result.status" $file)            
+            iconStepStatus=$(if [ "$status" = "failed" ]; then echo ":negative_squared_cross_mark:"; else echo ":heavy_check_mark:"; fi)            
             location=$(jq -r ".[] | .elements[].steps[$i].match.location" $file)                        
             header="${header}| $stepName | $keyword | $iconStepStatus $status | $location |\n";
         done
