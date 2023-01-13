@@ -31,7 +31,7 @@ for file in $(ls reports/*.json); do
     #echo "passed_steps: $passed_steps";
     report="${report}${scenario}${header}"
 done
-
+echo $report
 SUMMARY=$report
 echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
 #echo $report
