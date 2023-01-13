@@ -24,13 +24,13 @@ jobs:
         #npm install cucumber-html-reporter --save-dev
         npm install multiple-cucumber-html-reporter --save-dev
         npm test        
-        #npm run test:report        
-        cp -r reports/*.json reports/html/.
+        #npm run test:report                
     - name: "read report"
       if: ${{ always() }}
       run: |
         more reports/report.json
         npm run test:reportm        
+        cp -r reports/*.json reports/html/.
     - name: generate table1
       if: ${{ always() }}
       run: |           
